@@ -34,13 +34,21 @@ function App() {
         });
       });
 
-      spotify.getUserPlaylists().then((playlist) => 
+      spotify.getUserPlaylists().then((playlists) => {
       dispatch({
           type: "SET_PLAYLISTS",
           playlists: playlists,
-        }))
+        })
+      });
+
+      spotify.getPlaylist("50JkxtsGUsZ8QRKR57Czt9").then((response) =>
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: response,
+        })
+      );
     }
-      }, []);
+  }, []);
 
      
 
